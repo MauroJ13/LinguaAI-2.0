@@ -1,0 +1,14 @@
+@use 'sass:map';
+
+// Breakpoints (max-width). Usage: @include mq.down(md) { ... }
+$breakpoints: (
+  sm: 599px,
+  md: 899px,
+  lg: 1179px,
+);
+
+@mixin down($key) {
+  @media (max-width: map.get($breakpoints, $key)) {
+    @content;
+  }
+}

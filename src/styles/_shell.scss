@@ -1,0 +1,320 @@
+@use 'mq';
+
+.shell {
+  display: grid;
+  grid-template-columns: var(--sidebar) minmax(0, 1fr);
+  height: 100dvh;
+
+  @include mq.down(md) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.main {
+  min-width: 0;
+  min-height: 0;
+  height: 100dvh;
+  overflow-y: auto;
+
+  @include mq.down(md) {
+    flex: 1;
+    height: auto;
+  }
+}
+
+.shell--chat .main,
+.shell--speak .main {
+  overflow: hidden;
+}
+
+// ---------- Logo (original LinguaAI mark and wordmark) ----------
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.logo__mark {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 3px;
+  border-radius: 11px;
+  background: var(--grad);
+  box-shadow: var(--shadow-accent), inset 0 1px 0 #ffffff59;
+}
+
+.logo__text {
+  font-size: 19px;
+}
+
+.logo__ai {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.logo--lg .logo__mark {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+}
+
+.logo--lg .logo__text {
+  font-size: 24px;
+}
+
+// ---------- Sidebar (desktop) ----------
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  height: 100dvh;
+  padding: 24px 16px 16px;
+  border-right: 1px solid var(--line);
+  overflow-y: auto;
+
+  @include mq.down(md) {
+    display: none;
+  }
+}
+
+.sidebar .logo {
+  padding: 0 8px;
+}
+
+.sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nav-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 42px;
+  padding: 0 12px;
+  border-radius: var(--radius-m);
+  color: var(--ink-2);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.15s, color 0.15s;
+
+  &:hover {
+    color: var(--ink);
+    background: var(--surface-2);
+  }
+
+  &.is-active {
+    color: var(--ink);
+    background: var(--surface);
+    box-shadow: 0 0 0 1px var(--line), var(--shadow-card);
+  }
+
+  &.is-active::before {
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: 9px;
+    bottom: 9px;
+    width: 5px;
+    border-radius: 0 4px 4px 0;
+    background: var(--grad);
+  }
+
+  &.is-active svg {
+    color: var(--brand);
+  }
+}
+
+.nav-link--button {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-weight: 600;
+  text-align: start;
+}
+
+.nav-link svg {
+  font-size: 1.125rem;
+}
+
+.nav-link__badge {
+  margin-left: auto;
+  min-width: 22px;
+  padding: 0 7px;
+  border-radius: 999px;
+  background: var(--marigold);
+  color: #12152a;
+  font-size: var(--step--1);
+  font-weight: 700;
+  text-align: center;
+}
+
+.sidebar__foot {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: auto;
+}
+
+.tutor-status,
+.profile-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--radius-m);
+  color: var(--ink);
+  text-decoration: none;
+  line-height: 1.25;
+
+  &:hover,
+  &.is-active {
+    background: var(--surface-2);
+  }
+}
+
+.tutor-status {
+  border: 1px dashed var(--line-strong);
+  margin-bottom: 6px;
+}
+
+.tutor-status strong,
+.profile-link strong {
+  display: block;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 150px;
+}
+
+.tutor-status small,
+.profile-link small {
+  display: block;
+  color: var(--ink-2);
+  font-size: var(--step--1);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 150px;
+}
+
+.tutor-status__dot {
+  width: 10px;
+  height: 10px;
+  margin: 0 4px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 2px solid var(--ink-2);
+}
+
+.tutor-status__dot--ready {
+  border-color: var(--ok);
+  background: var(--ok);
+  box-shadow: 0 0 0 4px var(--ok-soft);
+}
+
+.tutor-status__dot--checking {
+  border-color: var(--brand);
+  border-top-color: transparent;
+  animation: spin 0.9s linear infinite;
+}
+
+// ---------- Top bar & tab bar (mobile) ----------
+
+.topbar {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  height: var(--topbar);
+  padding: 0 14px 0 18px;
+  border-bottom: 1px solid var(--line);
+
+  @include mq.down(md) {
+    display: flex;
+  }
+}
+
+.topbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.topbar__actions a {
+  display: inline-grid;
+  text-decoration: none;
+}
+
+.tabbar {
+  display: none;
+  flex-shrink: 0;
+  grid-template-columns: repeat(5, 1fr);
+  min-height: var(--tabbar);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+
+  @include mq.down(md) {
+    display: grid;
+  }
+}
+
+.tabbar__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  color: var(--ink-2);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-decoration: none;
+
+  &.is-active {
+    color: var(--ink);
+  }
+}
+
+.tabbar__icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 28px;
+  border-radius: 999px;
+  font-size: 1.1875rem;
+  transition: background-color 0.15s;
+}
+
+.tabbar__item.is-active .tabbar__icon {
+  background: var(--brand-soft);
+  color: var(--brand-text);
+}
+
+.tabbar__dot {
+  position: absolute;
+  top: 2px;
+  right: 10px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--danger);
+  box-shadow: 0 0 0 2px var(--surface);
+}

@@ -1,0 +1,265 @@
+@use 'mq';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: var(--step-0);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+dl,
+dd,
+figure {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.15;
+  font-weight: 650;
+  letter-spacing: -0.015em;
+}
+
+h1 {
+  font-size: var(--step-3);
+}
+
+h2 {
+  font-size: var(--step-1);
+}
+
+h3 {
+  font-size: var(--step-1);
+}
+
+a {
+  color: var(--brand);
+  text-underline-offset: 0.18em;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+svg {
+  flex-shrink: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--marigold);
+  color: #12152a;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.muted {
+  color: var(--ink-2);
+}
+
+.lede {
+  color: var(--ink-2);
+  font-size: var(--step-1);
+  max-width: 60ch;
+}
+
+// The language being learned is always set in the reading serif.
+.display {
+  font-family: var(--font-read);
+  font-size: var(--step-4);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.spin {
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// ---------- Flags: one box, one ratio, everywhere ----------
+
+.flag {
+  display: inline-block;
+  flex-shrink: 0;
+  aspect-ratio: 3 / 2;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px var(--line-strong);
+  object-fit: cover;
+  vertical-align: -0.15em;
+  background: var(--surface-2);
+}
+
+.flag--sm {
+  width: 21px;
+  height: 14px;
+}
+
+.flag--md {
+  width: 27px;
+  height: 18px;
+}
+
+.flag--lg {
+  width: 36px;
+  height: 24px;
+  border-radius: 4px;
+}
+
+// ---------- Page scaffolding ----------
+
+.page {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 40px 40px 72px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include mq.down(md) {
+    padding: 24px 18px 40px;
+    gap: 18px;
+  }
+}
+
+.page--narrow {
+  max-width: 760px;
+}
+
+.page__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.page__head .lede {
+  margin-top: 6px;
+  font-size: var(--step-0);
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-l);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+
+  @include mq.down(sm) {
+    padding: 18px;
+    border-radius: var(--radius-m);
+  }
+}
+
+.panel__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.panel__head a {
+  font-size: var(--step--1);
+  font-weight: 550;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+
+  @include mq.down(md) {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}

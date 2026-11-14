@@ -1,0 +1,74 @@
+// Design tokens. The palette is the original LinguaAI identity: the violet-to-sky
+// gradient of the logo, deep navy text, and the same light and dark surfaces.
+// Marigold is the highlighter for words; "danger" is the proofreader's pen.
+
+:root {
+  --font-ui: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-read: 'Literata', 'Iowan Old Style', 'Palatino Linotype', Georgia, 'Noto Serif', serif;
+
+  --paper: #f4f5fa;
+  --surface: #ffffff;
+  --surface-2: #eceef6;
+  --ink: #12152a;
+  --ink-2: #5d6382;
+  --line: #14182d1a;
+  --line-strong: #14182d33;
+  --brand: #6d4dff;
+  --brand-hover: #5a38f5;
+  --brand-text: #5a38f5;
+  --brand-soft: #ece8ff;
+  --on-brand: #ffffff;
+  --sky: #38bdf8;
+  --grad: linear-gradient(135deg, #8b6cff 0%, #5b7cff 50%, #38bdf8 100%);
+  --user-bubble: linear-gradient(135deg, #7453ff 0%, #4f6bff 100%);
+  --marigold: #ffc145;
+  --marigold-soft: #fff0c7;
+  --danger: #e11d48;
+  --danger-soft: #fde7ec;
+  --ok: #059669;
+  --ok-soft: #e2f6ee;
+  --shadow-pop: 0 30px 80px -30px #1e235047, 0 2px 6px #1e235014;
+  --shadow-card: 0 1px 0 #14182d0d;
+  --shadow-accent: 0 14px 30px -14px #6d4dff8c;
+
+  --radius-s: 8px;
+  --radius-m: 14px;
+  --radius-l: 22px;
+
+  --step--1: 0.8125rem;
+  --step-0: 0.9375rem;
+  --step-1: 1.0625rem;
+  --step-2: 1.3125rem;
+  --step-3: 1.75rem;
+  --step-4: clamp(2.25rem, 1.4rem + 3.4vw, 3.75rem);
+
+  --sidebar: 256px;
+  --tabbar: 64px;
+  --topbar: 56px;
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --paper: #0a0b12;
+  --surface: #12141f;
+  --surface-2: #1f2335;
+  --ink: #eceef6;
+  --ink-2: #a3a9c0;
+  --line: #ffffff14;
+  --line-strong: #ffffff2e;
+  --brand: #8b6cff;
+  --brand-hover: #7453ff;
+  --brand-text: #b9a8ff;
+  --brand-soft: #8b6cff29;
+  --on-brand: #ffffff;
+  --marigold: #ffc145;
+  --marigold-soft: #4a3a10;
+  --danger: #fb7185;
+  --danger-soft: #fb71851f;
+  --ok: #34d399;
+  --ok-soft: #34d3991f;
+  --shadow-pop: 0 30px 80px -24px #000000b3, 0 2px 6px #00000052;
+  --shadow-card: 0 1px 0 #00000033;
+  --shadow-accent: 0 14px 34px -12px #7453ff8c;
+  color-scheme: dark;
+}

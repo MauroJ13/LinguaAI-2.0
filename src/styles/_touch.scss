@@ -1,0 +1,116 @@
+// Touch devices and small screens: every control is at least 40–44 px high so
+// it can be hit with a thumb, and text fields use 16 px so iPhone Safari does
+// not zoom the page when one is focused. Loaded last so it wins over the
+// desktop sizes above.
+
+@media (pointer: coarse), (max-width: 899px) {
+  .icon-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 1.25rem;
+  }
+
+  .tool {
+    min-height: 40px;
+    padding: 0 12px;
+  }
+
+  .tool--icon {
+    min-width: 40px;
+    justify-content: center;
+  }
+
+  .btn--small,
+  .pill,
+  .segmented button,
+  .modeswitch a {
+    min-height: 40px;
+  }
+
+  .levels__item {
+    min-height: 44px;
+  }
+
+  .swatch {
+    width: 42px;
+    height: 42px;
+  }
+
+  .switch {
+    width: 54px;
+    height: 32px;
+  }
+
+  .switch span {
+    width: 26px;
+    height: 26px;
+  }
+
+  .switch.is-on span {
+    transform: translateX(22px);
+  }
+
+  .select__option {
+    min-height: 44px;
+  }
+
+  .topbar__actions a {
+    min-width: 44px;
+    min-height: 44px;
+    place-items: center;
+  }
+
+  input[type='range'] {
+    min-height: 36px;
+  }
+
+  .check {
+    min-height: 40px;
+  }
+
+  .check input {
+    width: 20px;
+    height: 20px;
+  }
+
+  .word {
+    padding: 4px 3px;
+  }
+
+  .input,
+  .search input,
+  select.input,
+  .lt__pane textarea {
+    font-size: 1rem;
+  }
+
+  .transcript__head a,
+  .panel__head a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+  }
+}
+
+// Phone top bar: four 44 px actions next to the logo. On the narrowest phones
+// (320 px) the wordmark gives way so nothing is pushed off screen.
+@media (max-width: 899px) {
+  .topbar {
+    padding: 0 6px 0 14px;
+  }
+
+  .topbar__actions {
+    gap: 0;
+  }
+
+  .modeswitch a {
+    min-width: 44px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 359px) {
+  .topbar .logo__text {
+    display: none;
+  }
+}

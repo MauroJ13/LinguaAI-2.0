@@ -1,0 +1,10 @@
+// LinguaAI stylesheet entry. Order matters: tokens → base → controls → layout → screens.
+@use 'tokens';
+@use 'base';
+@use 'controls';
+@use 'shell';
+@use 'chat';
+@use 'speak';
+@use 'pages';
+@use 'translator';
+@use 'touch';
